@@ -1,12 +1,15 @@
-import React from 'react'
-import DES from '../../algopages/DES'
-import AES from '../../algopages/AES'
+import Fermat from '../../algopages/Fermat'
+import GCD from '../../algopages/GCD'
+import MillerRabin from '../../algopages/MillerRabin'
 
 const Ex3 = () => {
   return (
     <>
-    <DES/>
-    <AES/>
+    <h1>Exercise 3: Primality tests</h1>
+    <MillerRabin/>
+        <GCD/>
+        <Fermat/>
+    
     </>
   )
 }

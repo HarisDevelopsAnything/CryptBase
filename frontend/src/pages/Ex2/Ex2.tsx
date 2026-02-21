@@ -1,14 +1,11 @@
-import Fermat from "../../algopages/Fermat"
-import GCD from "../../algopages/GCD"
-import MillerRabin from "../../algopages/MillerRabin"
+import Playfair from "../../algopages/Playfair"
+
 
 const Ex2 = () => {
   return (
     <div>
-        <h1>Exercise 2: Primality Tests</h1>
-        <MillerRabin/>
-        <GCD/>
-        <Fermat/>
+        <h1>Exercise 2: Playfair Cipher</h1>
+        <Playfair/>
     </div>
   )
 }

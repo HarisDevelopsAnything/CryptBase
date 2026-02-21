@@ -121,7 +121,7 @@ export default function PlayfairCipher() {
           <div>
             <h3>Key Matrix:</h3>
             <div>
-              {result.keyMatrix.map((row, i) =>
+              {result.keyMatrix.map((row, _) =>
                 <div>{row.join(' ')}</div>
               )}
             </div>
