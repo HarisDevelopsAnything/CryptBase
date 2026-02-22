@@ -42,6 +42,7 @@ interface AESResult {
 }
 
 const AES = () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [text, setText] = useState("");
     const [key, setKey] = useState("");
     const [mode, setMode] = useState<'encrypt' | 'decrypt'>('encrypt');
@@ -61,10 +62,12 @@ const AES = () => {
                 ? { plaintext: text, key }
                 : { ciphertext: text, key };
 
-            const response = await fetch(`http://localhost:5000/api/aes/${endpoint}`, {
+            const response = await fetch(`${backendUrl}/api/aes/${endpoint}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text, key }),
             });
 
             if (!response.ok) {

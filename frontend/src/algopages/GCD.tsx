@@ -26,7 +26,8 @@ const GCD = () => {
         setResult(null);
 
         try {
-            const response = await fetch(`http://localhost:5000/api/gcd`, {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/gcd`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

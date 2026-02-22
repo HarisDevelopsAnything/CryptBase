@@ -22,8 +22,9 @@ export default function PlayfairCipher() {
     setResult(null);
 
     try {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL;
       const endpoint = mode === 'encrypt' ? 'encrypt' : 'decrypt';
-      const response = await fetch(`http://localhost:5000/api/playfair/${endpoint}`, {
+      const response = await fetch(`${backendUrl}/api/playfair/${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

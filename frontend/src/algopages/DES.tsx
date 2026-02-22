@@ -1,5 +1,4 @@
-import { useState } from "react"
-
+import { useState } from "react";
 interface DESSteps {
     plaintext?: string;
     ciphertext?: string;
@@ -22,6 +21,7 @@ interface DESResult {
 }
 
 const DES = () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [text, setText] = useState("");
     const [key, setKey] = useState("");
     const [p10, setP10] = useState("3 5 2 7 4 10 1 9 8 6");
@@ -49,7 +49,7 @@ const DES = () => {
                 ? { plaintext: text, key, p10, p8, ip: ipv, ipinv, ep: epv, p4, s0, s1 }
                 : { ciphertext: text, key, p10, p8, ip: ipv, ipinv, ep: epv, p4, s0, s1 };
 
-            const response = await fetch(`http://localhost:5000/api/des/${endpoint}`, {
+            const response = await fetch(`${backendUrl}/api/des/${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

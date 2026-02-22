@@ -21,7 +21,8 @@ const Affine = () => {
         setResult(null);
         try{
             const endpoint = mode === 'enc' ? 'encrypt' : 'decrypt';
-            const response = await fetch(`http://localhost:5000/api/affine/${endpoint}`, {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/affine/${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type' : 'application/json'

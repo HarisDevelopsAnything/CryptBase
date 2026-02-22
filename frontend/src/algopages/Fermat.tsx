@@ -26,7 +26,8 @@ const Fermat = () => {
         setResult(null);
 
         try {
-            const response = await fetch(`http://localhost:5000/api/fermat`, {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/fermat`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

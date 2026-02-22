@@ -20,7 +20,8 @@ const Vigenere = () => {
         setError('');
 
         try{
-            const response = await fetch(`http://localhost:5000/api/vigenere/${mode}`, {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/vigenere/${mode}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

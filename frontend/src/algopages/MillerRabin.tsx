@@ -26,7 +26,8 @@ const MillerRabin = () => {
         setResult(null);
 
         try {
-            const response = await fetch(`http://localhost:5000/api/miller`, {
+            const backendUrl = import.meta.env.VITE_BACKEND_URL;
+            const response = await fetch(`${backendUrl}/api/miller`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
