@@ -8,6 +8,7 @@ from algorithms.fermat import fermat_test
 from algorithms.gcd import gcd_with_steps
 from algorithms.des import des_encrypt, des_decrypt
 from algorithms.aes import aes_encrypt, aes_decrypt
+from algorithms.rsa import rsa_encrypt, rsa_decrypt
 
 app = Flask(__name__)
 CORS(app)
@@ -247,6 +248,39 @@ def decrypt_aes():
         return jsonify(result)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/api/rsa/encrypt', methods=['POST'])
+def encrypt_rsa():
+    try:
+        data = request.get_json()
+        plain = int(data.get('plain',''))
+        p = int(data.get('p',''))
+        q = int(data.get('q',''))
+
+        if not plain or not p or not q:
+            return jsonify({'error': 'Plaintext, p and q are needed.'}), 400
+        
+        result = rsa_encrypt(plain, p, q)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+@app.route('/api/rsa/decrypt', methods=['POST'])
+def decrypt_rsa():
+    try:
+        data = request.get_json()
+        cipher = int(data.get('cipher',''))
+        p = int(data.get('p',''))
+        q = int(data.get('q',''))
+
+        if not cipher or not p or not q:
+            return jsonify({'error': 'Ciphertext, p and q are needed.'}), 400
+        
+        result = rsa_decrypt(cipher, p, q)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
